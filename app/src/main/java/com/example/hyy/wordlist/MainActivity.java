@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,16 +25,19 @@ import com.example.hyy.wordlist.dummy.DummyContent;
 public class MainActivity extends Activity implements ItemFragment.OnListFragmentInteractionListener,fragment_detail.OnFragmentInteractionListener{
         private worddbhelper dbHelper;
          private TextView adds;
+      public Words w;
   public  Context context ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Words.dbHelper = new worddbhelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         adds=this.findViewById(R.id.l);
        this.registerForContextMenu(adds);
        context = getApplicationContext();
-      //  dbHelper = new worddbhelper(this);
+
+        //
     }
 
     @Override
@@ -63,6 +67,8 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
         super.onCreateContextMenu(menu, v, menuInfo);
         menu.add(0, 0, 0, "添加");
         menu.add(0, 1, 0, "修改");
+        menu.add(0, 2, 0, "删除");
+        menu.add(0, 3, 0, "查询");
         // 将三个菜单项设为单选菜单项
     }
 
@@ -73,13 +79,19 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
         switch (mi.getItemId())
         {
             case 0:
-            addword();
+                addword();
                 break;
-
             case 1:
                 changeword();
             break;
+            case 2:
+                deleteword();
+            break;
+            case 3:
+                searchword();
+            break;
             default:
+
 
         }
         return super.onContextItemSelected(mi);
@@ -90,7 +102,16 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
         View view= LayoutInflater.from(MainActivity.this).inflate(R.layout.fragment_add_, null);
         builder.setView(view);
        builder.create();
-
+        final EditText word=(EditText)view.findViewById(R.id.word);
+        final EditText example=(EditText)view.findViewById(R.id.example);
+        final EditText meaning=(EditText)view.findViewById(R.id.meaing);
+        Button btn_submit=(Button)view.findViewById(R.id.btn_submit);
+        btn_submit.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                w.addword(word.getText().toString(),meaning.getText().toString(),example.getText().toString());
+                }
+        });
         builder.show();
     }
     void changeword(){
@@ -101,7 +122,22 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
 
         builder.show();
     }
+    void deleteword(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        View view= LayoutInflater.from(MainActivity.this).inflate(R.layout.fragment_deletefragment, null);
+        builder.setView(view);
+        builder.create();
 
+        builder.show();
+    }
+
+    void searchword(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        View view= LayoutInflater.from(MainActivity.this).inflate(R.layout.fragment_searchfragment, null);
+        builder.setView(view);
+        builder.create();
+        builder.show();
+    }
     public void onFragmentInteraction(String id){
         Bundle arguments=new Bundle();
             arguments.putString("id",id);
