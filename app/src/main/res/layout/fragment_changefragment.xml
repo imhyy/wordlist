@@ -32,7 +32,6 @@
             android:gravity="center_vertical"
             android:hint="请输入单词"
             android:inputType="text"
-            android:maxLength="11"
             android:paddingLeft="10dp"
             android:textSize="14sp" />
 
@@ -40,17 +39,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/words5"
+                android:layout_width="1000dp"
+                android:layout_height="48dp"
+                android:layout_weight="4"
+                android:gravity="center_vertical"
+                android:hint="重新输入单词"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/meaings2"
-                android:layout_width="0dp"
+                android:layout_width="1000dp"
                 android:layout_height="48dp"
                 android:layout_weight="4"
                 android:gravity="center_vertical"
                 android:hint="重新输入单词意思"
                 android:inputType="text"
-                android:maxLength="11"
                 android:paddingLeft="10dp"
                 android:textSize="14sp" />
 
@@ -64,7 +75,6 @@
             android:gravity="center_vertical"
             android:hint="重新输入例句"
             android:inputType="text"
-            android:maxLength="11"
             android:paddingLeft="10dp"
             android:textSize="14sp" />
 

@@ -37,6 +37,8 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
    public FragmentTransaction transaction;
     ItemFragment fragment1;
     ItemFragment fragment2;
+    ItemFragment fragment3;
+    ItemFragment fragment4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         dbHelper = new worddbhelper(this);
@@ -137,6 +139,9 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
                Toast.makeText(context, "add succeeded", Toast.LENGTH_SHORT).show();
               fragment2=new ItemFragment();
                getFragmentManager().beginTransaction().hide(fragment1);
+               getFragmentManager().beginTransaction().hide(fragment2);
+               getFragmentManager().beginTransaction().hide(fragment3);
+               getFragmentManager().beginTransaction().hide(fragment4);
               getFragmentManager().beginTransaction().replace(R.id.wordlsit,fragment2).commit();
 
            }
@@ -160,6 +165,13 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
                 if(w.isexist(word.getText().toString())) {
                     w.deleteword(word.getText().toString());
                     Toast.makeText(context, "delete succeeded", Toast.LENGTH_SHORT).show();
+                    fragment3=new ItemFragment();
+                    getFragmentManager().beginTransaction().hide(fragment1);
+                    getFragmentManager().beginTransaction().hide(fragment2);
+                    getFragmentManager().beginTransaction().hide(fragment3);
+                    getFragmentManager().beginTransaction().hide(fragment4);
+                    getFragmentManager().beginTransaction().replace(R.id.wordlsit,fragment3).commit();
+
                 }
                 else {
                     Toast.makeText(context, "word is not exist", Toast.LENGTH_SHORT).show();
@@ -175,14 +187,21 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
         builder.setView(view);
        builder.create();
         final EditText word=(EditText)view.findViewById(R.id.words2);
+        final EditText word5=(EditText)view.findViewById(R.id.words5);
         final EditText example=(EditText)view.findViewById(R.id.examples2);
         final EditText meaning=(EditText)view.findViewById(R.id.meaings2);
         final Button btn_submit=(Button)view.findViewById(R.id.btn_submit2);
         btn_submit.setOnClickListener( new View.OnClickListener() {
             public void onClick(View view) {
                 if(w.isexist(word.getText().toString())) {
-                    w.changeword(word.getText().toString(),meaning.getText().toString(),example.getText().toString());
+                    w.changeword(word.getText().toString(),word5.getText().toString(),meaning.getText().toString(),example.getText().toString());
                     Toast.makeText(context, "change succeeded", Toast.LENGTH_SHORT).show();
+                    fragment4=new ItemFragment();
+                    getFragmentManager().beginTransaction().hide(fragment1);
+                    getFragmentManager().beginTransaction().hide(fragment2);
+                    getFragmentManager().beginTransaction().hide(fragment3);
+                    getFragmentManager().beginTransaction().hide(fragment4);
+                    getFragmentManager().beginTransaction().replace(R.id.wordlsit,fragment4).commit();
                 }
                 else {
                     Toast.makeText(context, "word is not exist", Toast.LENGTH_SHORT).show();

@@ -67,7 +67,7 @@ public class Words {
         Object bindArgs[] = new Object[] { word };
         sqliteDatabase.execSQL(sql,bindArgs);
     }
-    public void changeword(String word,String meaning,String sample){
+    public void changeword(String word,String word5,String meaning,String sample){
         if(!meaning.equals("")){
             String sql = "update words set meaning=? where word=?";
             Object bindArgs[] = new Object[] { meaning,word };
@@ -79,9 +79,9 @@ public class Words {
             sqliteDatabase.execSQL(sql,bindArgs);
         }
 
-        if(!word.equals("")){
+        if(!word5.equals("")){
                 String sql = "update words set word=? where word=?";
-                Object bindArgs[] = new Object[] { word };
+                Object bindArgs[] = new Object[] { word5,word };
                 sqliteDatabase.execSQL(sql,bindArgs);
             }
 

@@ -31,8 +31,7 @@
             android:layout_height="48dp"
             android:gravity="center_vertical"
             android:hint="请输入单词"
-            android:inputType="textCapCharacters"
-            android:maxLength="11"
+            android:inputType="text"
             android:paddingLeft="10dp"
             android:textSize="14sp" />
 
@@ -50,7 +49,6 @@
                 android:gravity="center_vertical"
                 android:hint="请输入意思"
                 android:inputType="text"
-                android:maxLength="11"
                 android:paddingLeft="10dp"
                 android:textSize="14sp" />
 
@@ -63,8 +61,7 @@
             android:layout_height="48dp"
             android:gravity="center_vertical"
             android:hint="请输入例句"
-            android:inputType="textCapCharacters"
-            android:maxLength="11"
+            android:inputType="text"
             android:paddingLeft="10dp"
             android:textSize="14sp" />
 
