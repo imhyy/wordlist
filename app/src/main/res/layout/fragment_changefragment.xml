@@ -26,7 +26,7 @@
             android:textColor="#414141" />
 
         <EditText
-            android:id="@+id/word"
+            android:id="@+id/words2"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center_vertical"
@@ -43,7 +43,7 @@
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/meaing"
+                android:id="@+id/meaings2"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="4"
@@ -58,7 +58,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/example"
+            android:id="@+id/examples2"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center_vertical"
@@ -69,7 +69,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_submit"
+            android:id="@+id/btn_submit2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"

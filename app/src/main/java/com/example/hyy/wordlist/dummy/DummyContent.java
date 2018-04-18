@@ -1,5 +1,7 @@
 package com.example.hyy.wordlist.dummy;
 
+import com.example.hyy.wordlist.Words;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,20 +25,25 @@ public class DummyContent {
      */
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
-    private static final int COUNT = 25;
 
-    static {
+
+
+
+   public static  void adds(){
         // Add some sample items.
-
-            addItem(new DummyItem("1", "Apple", "Apple"));
-            addItem(new DummyItem("2", "Orange", "Orange"));
-            addItem(new DummyItem("3", "Banana", "Banana"));
-
+        for(int i=0;i<Words.count();i++)
+        {
+            addItem(new DummyItem(i+"", Words.getword().get(i),Words.getword().get(i)));
+        }
     }
 
     private static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
+    }
+   public static void deleteItem() {
+        ITEMS.clear();
+        ITEM_MAP.clear();
     }
 
     private static DummyItem createDummyItem(int position) {

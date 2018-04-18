@@ -26,7 +26,7 @@
             android:textColor="#414141" />
 
         <EditText
-            android:id="@+id/word"
+            android:id="@+id/words4"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center_vertical"
@@ -38,7 +38,7 @@
 
 
         <Button
-            android:id="@+id/btn_submit"
+            android:id="@+id/btn_submit4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"

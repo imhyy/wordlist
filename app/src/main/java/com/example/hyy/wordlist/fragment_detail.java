@@ -68,14 +68,17 @@ public class fragment_detail extends Fragment {
         TextView textViewWord=(TextView)view.findViewById(R.id.word);
         TextView textViewMeaning=(TextView)view.findViewById(R.id.wordmeaning);
         TextView textViewSample=(TextView)view.findViewById(R.id.wordsample);
-        switch (mParam1)
-        {
-            case "1":
-            textViewWord.setText("sbw");
-            textViewMeaning.setText("时博文");
-            textViewSample.setText("sbw is my love");
-                break;
-        }
+
+       for (int i=0;i<Words.count();i++) {
+           {
+               if (Words.getword().get(i).equals(mParam1)) {
+                   textViewWord.setText("单词:"+mParam1);
+                   textViewMeaning.setText("意思:"+Words.getmeaning().get(i));
+                   textViewSample.setText("例子"+Words.getsample().get(i));
+                   break;
+               }
+           }
+       }
 
         // Inflate the layout for this fragment
         return view;

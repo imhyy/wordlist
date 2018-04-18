@@ -26,12 +26,12 @@
             android:textColor="#414141" />
 
         <EditText
-            android:id="@+id/word"
+            android:id="@+id/words1"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center_vertical"
             android:hint="请输入单词"
-            android:inputType="text"
+            android:inputType="textCapCharacters"
             android:maxLength="11"
             android:paddingLeft="10dp"
             android:textSize="14sp" />
@@ -43,7 +43,7 @@
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/meaing"
+                android:id="@+id/meaings1"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="4"
@@ -58,18 +58,18 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/example"
+            android:id="@+id/examples1"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center_vertical"
             android:hint="请输入例句"
-            android:inputType="text"
+            android:inputType="textCapCharacters"
             android:maxLength="11"
             android:paddingLeft="10dp"
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_submit"
+            android:id="@+id/btn_submit1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"
