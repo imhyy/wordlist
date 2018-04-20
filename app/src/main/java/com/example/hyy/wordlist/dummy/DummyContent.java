@@ -39,7 +39,7 @@ public class DummyContent {
 
     private static void addItem(DummyItem item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
+        ITEM_MAP.put(item.content, item);
     }
    public static void deleteItem() {
         ITEMS.clear();

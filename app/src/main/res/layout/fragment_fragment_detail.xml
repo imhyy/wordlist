@@ -13,21 +13,21 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="100dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
             android:id="@+id/word"/>
 
         <TextView
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="0dp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="70dp"
             android:id="@+id/wordmeaning"
             />
 
         <TextView
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="0dp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="70dp"
             android:id="@+id/wordsample"
            />
     </LinearLayout>

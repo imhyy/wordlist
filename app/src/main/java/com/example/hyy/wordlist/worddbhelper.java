@@ -4,14 +4,14 @@ import android.database.sqlite.*;
 import android.widget.Toast;
 
 public class worddbhelper extends SQLiteOpenHelper {
-    private final static String DATABASE_NAME = "word.db";//数据库名字
+    private final static String DATABASE_NAME = "wordd.db";//数据库名字
     private final static int DATABASE_VERSION = 1;//数据库版本
     private final static String SQL_DELETE_DATABASE = "DROP TABLE IF EXISTS " + Words.Word.TABLE_NAME;
     //private final static String SQL_CREATE_DATABASE = "CREATE DATABASE" + DATABASE_NAME;
     public final static String SQL_CREATE_TABLE = "CREATE TABLE " + Words.Word.TABLE_NAME + "("
-            + Words.Word.COLUMN_NAME_WORD + " TEXT PRIMARY KEY,"
-            + Words.Word.COLUMN_NAME_MEANING + " TEXT,"
-            + Words.Word.COLUMN_NAME_SAMPLE + " TEXT"
+            + Words.Word.COLUMN_NAME_WORD + " TEXT NOT NULL PRIMARY KEY,"
+            + Words.Word.COLUMN_NAME_MEANING + " TEXT DEFAULT NULL,"
+            + Words.Word.COLUMN_NAME_SAMPLE + " TEXT DEFAULT NULL "
             + ")";
      private Context mContext;
     public worddbhelper(Context context) {

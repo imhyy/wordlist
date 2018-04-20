@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fuzzy_result"
+    android:weightSum="1">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="100dp"
+        android:layout_height="match_parent">
+
+        <TextView
+        android:text="单词"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:id="@+id/textword" />
+
+        <TextView
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textword1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="135dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="意思"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:id="@+id/textmeaning" />
+
+        <TextView
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textmeaning1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+        android:text="例子"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:id="@+id/textsample" />
+        <TextView
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textsample1" />
+    </LinearLayout>
+
+</LinearLayout>

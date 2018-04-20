@@ -29,6 +29,8 @@ import android.widget.Toast;
 import com.example.hyy.wordlist.dummy.DummyContent;
 import com.example.hyy.wordlist.dummy.DummyContent.DummyItem;
 
+import java.util.ArrayList;
+
 public class MainActivity extends Activity implements ItemFragment.OnListFragmentInteractionListener,fragment_detail.OnFragmentInteractionListener{
     public worddbhelper dbHelper;
     public Words w;
@@ -49,8 +51,7 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
        this.registerForContextMenu(adds);
        context = getApplicationContext();
     fragment1=new ItemFragment();
-         transaction = getFragmentManager().beginTransaction();
-
+        transaction = getFragmentManager().beginTransaction();
        transaction.add(R.id.wordlsit,fragment1);
         transaction.show(fragment1);
         //transaction.replace(R.id.wordlsit, fragment1);
@@ -215,15 +216,85 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
 
 
     void searchword(){
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         View view= LayoutInflater.from(MainActivity.this).inflate(R.layout.fragment_searchfragment, null);
         builder.setView(view);
         builder.create();
         final EditText word=(EditText)view.findViewById(R.id.words4);
+        final EditText word2=(EditText)view.findViewById(R.id.words6);
         final Button btn_submit=(Button)view.findViewById(R.id.btn_submit4);
+        final Button btn_submit2=(Button)view.findViewById(R.id.btn_submit5);
         btn_submit.setOnClickListener( new View.OnClickListener() {
             public void onClick(View view) {
-                w.searchword(word.getText().toString());
+                if(w.isexist(word.getText().toString())) {
+                    String words1=word.getText().toString();
+                    String [] s=new String[2];
+                   s=w.searchword(word.getText().toString());
+                    final AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                    View view1= LayoutInflater.from(MainActivity.this).inflate(R.layout.fuzzysearch, null);
+                    TextView word3=(TextView)view1.findViewById(R.id.textword1);
+                    TextView meaning3=(TextView)view1.findViewById(R.id.textmeaning1);
+                    TextView sample3=(TextView)view1.findViewById(R.id.textsample1);
+                    word3.setText(words1);
+                    meaning3.setText(s[0]);
+                    sample3.setText(s[1]);
+                    builder1.setView(view1);
+                    builder1.show();
+                }
+                else {
+                    String [] s=new String[3];
+                  s=w.youdaosearch(word.getText().toString());
+                  w.addword(s[0],s[1],s[2]);
+                  final AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                    View view1= LayoutInflater.from(MainActivity.this).inflate(R.layout.fuzzysearch, null);
+                    TextView word3=(TextView)view1.findViewById(R.id.textword1);
+                    TextView meaning3=(TextView)view1.findViewById(R.id.textmeaning1);
+                    TextView sample3=(TextView)view1.findViewById(R.id.textsample1);
+                    word3.setText(s[0]);
+                    meaning3.setText(s[1]);
+                    sample3.setText(s[2]);
+                    builder1.setView(view1);
+                    builder1.show();
+                    fragment2=new ItemFragment();
+                    getFragmentManager().beginTransaction().hide(fragment1);
+                    getFragmentManager().beginTransaction().hide(fragment2);
+                    getFragmentManager().beginTransaction().hide(fragment3);
+                    getFragmentManager().beginTransaction().hide(fragment4);
+                    getFragmentManager().beginTransaction().replace(R.id.wordlsit,fragment2).commit();
+
+
+                }
+
+            }
+        });
+        btn_submit2.setOnClickListener( new View.OnClickListener() {
+            public void onClick(View view) {
+                String words1="";
+                String meaning1="";
+                String sample1="";
+                ArrayList<String> s=new ArrayList<>();
+                s=w.Fuzzy_search(word2.getText().toString());
+                int i=0;
+              while(i<s.size()){
+                    words1=words1+s.get(i)+"\n";
+                    meaning1=meaning1+s.get(i+1)+"\n";
+                    sample1=sample1+s.get(i+2)+"\n";
+                    i=i+3;
+                }
+
+               // Toast.makeText(context,s.get(1), Toast.LENGTH_SHORT).show();
+              final AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                View view1= LayoutInflater.from(MainActivity.this).inflate(R.layout.fuzzysearch, null);
+                TextView word3=(TextView)view1.findViewById(R.id.textword1);
+                TextView meaning3=(TextView)view1.findViewById(R.id.textmeaning1);
+                TextView sample3=(TextView)view1.findViewById(R.id.textsample1);
+                word3.setText(words1);
+                meaning3.setText(meaning1);
+                sample3.setText(sample1);
+                builder1.setView(view1);
+                builder1.show();
+
             }
         });
         builder.show();
@@ -237,12 +308,6 @@ public class MainActivity extends Activity implements ItemFragment.OnListFragmen
 
     }
 
-
-       public void refresh() {
-           finish();
-           Intent intent = new Intent(MainActivity.this, MainActivity.class);
-           startActivity(intent);
-       }
 
     public void onListFragmentInteraction(DummyContent.DummyItem item){
         onFragmentInteraction(item.content);
